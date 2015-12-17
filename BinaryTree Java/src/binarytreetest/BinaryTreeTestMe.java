@@ -26,20 +26,20 @@ public class BinaryTreeTestMe {
     }
 
     public void run() {
-        No root = new No(5);           
+        No root = new No(5);
         insert(root, 3);
         insert(root, 7);
-        /* insert(root, 7);
         insert(root, 6);
+        /*insert(root, 7);*/
         insert(root, 9);
         insert(root, 1);
-        insert(root, 4);   */                 
-                
+        insert(root, 4);                    
+
         //System.out.println("Tamanho: "+size(root));
         //System.out.println("Profundidade: "+ depthMax(root));
         //System.out.println("Altura: "+ height(root));
         //printInorder(root);
-        //printPostoder(root);      
+        //printPostoder(root);
         //System.out.println("Vazia: "+ isEmpty(root));
         //System.out.println("Menor valor "+minValue(root));
 
@@ -48,17 +48,17 @@ public class BinaryTreeTestMe {
     }
 
     /* IMCOMPLETE */
-    private int size(No no) {  
+    private int size(No no) {
       if ((no == null) || (no.empty)) {
-        return(0); 
+        return(0);
       }
-      else { 
+      else {
           // verificar caso em que ela é vazia
-        return(size(no.left) + 1 + size(no.right)); 
-      } 
-    }      
+        return(size(no.left) + 1 + size(no.right));
+      }
+    }
 
-    /* DONE */ 
+    /* DONE */
     private boolean isEmpty(No no){
         if ((no == null) || (no.empty)) {
             return true;
@@ -67,11 +67,11 @@ public class BinaryTreeTestMe {
             return false;
         }
     }
-    
+
     /* DONE */
     private void insert(No no, int value){
         if (value < no.value) {
-            if (no.left != null) { 
+            if (no.left != null) {
                 // se já existir um nó, a verificação vai para ele
                 insert(no.left, value);
             }
@@ -101,30 +101,30 @@ public class BinaryTreeTestMe {
             printInorder(no.right);
         }
     }
-    
+
     /* DONE */
-    private void printPostoder(No no) { 
+    private void printPostoder(No no) {
         if (no != null){
             printPostoder(no.left);
-            printPostoder(no.right); 
+            printPostoder(no.right);
 
             System.out.println(no.value);
         }
-    } 
-  
+    }
+
     /* FIXME */
-    private int depthMax(No no) { 
-      if (no==null) { 
-        return(0); 
-      } 
-      else { 
-        int lDepth = depthMax(no.left); 
+    private int depthMax(No no) {
+      if (no==null) {
+        return(0);
+      }
+      else {
+        int lDepth = depthMax(no.left);
         int rDepth = depthMax(no.right);
 
-        // use the larger + 1 
-        return(Math.max(lDepth, rDepth) + 1); 
-      } 
-    }    
+        // use the larger + 1
+        return(Math.max(lDepth, rDepth) + 1);
+      }
+    }
 
     /* FIXME */
     private int height(No no){
@@ -132,8 +132,8 @@ public class BinaryTreeTestMe {
              return -1;
         else
              return Math.max(height(no.left), height(no.right)) + 1;
-    }   
-    
+    }
+
     /* DONE */
     private int minValue(No no) {
         if (no.left == null)
@@ -141,10 +141,10 @@ public class BinaryTreeTestMe {
         else
             return minValue(no.left);
     }
-    
+
     /* DONE */
     private boolean search(No no, int value) {
-        if (no.value == value) 
+        if (no.value == value)
            return true;
         else if (no==null)
            return false;
@@ -156,15 +156,15 @@ public class BinaryTreeTestMe {
     }
 
     private No searchForDelete(No no, int value) {
-        if ((no == null) || (no.value == value)) 
+        if ((no == null) || (no.value == value))
            return no;
 
         if (value > no.value)
            return searchForDelete(no.right, value);
         else
            return searchForDelete(no.left, value);
-    }   
-    
+    }
+
     private void delete(No no, int value){
         No aux = searchForDelete(no, value);
         if (aux == null) {
@@ -175,16 +175,16 @@ public class BinaryTreeTestMe {
             // node is a leaf
             if ((aux.left == null) && (aux.right == null)) {
                 aux = null;
-                
+
             }
             //else if  ONE CHILD
-                // 
+                //
             //else if  TWO CHILD
-                // 
+                //
         }
-             //return aux;   
+             //return aux;
     }
 
-    
-    
+
+
 }
