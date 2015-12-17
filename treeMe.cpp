@@ -26,6 +26,14 @@ void inorder(struct node *root){
     }
 }
 
+int size(struct node* node){
+  if (node == NULL) {
+    return 0;
+  }
+  else
+    return size(node->left) + 1 + size(node->right);
+}
+
 void posorder(struct node* node){
   if (node != NULL) {
     posorder(node->left);
@@ -73,11 +81,13 @@ bool search(struct node* node, int key) {
 // Driver Program to test above functions
 int main() {
     /* Let us create following BST
-                5
-             /    \
-           3       7
-          /  \   /  \
-         2   4  6   8 */
+               5
+             /   \
+           3      7
+          /  \  /  \
+         2   4 6   8
+    */
+
     struct node *root = NULL;
     root = insert(root, 5);
 
@@ -89,19 +99,21 @@ int main() {
     insert(root, 8);
     /*  */
 
+    /* size of tree */
+    cout << size(root);
+
     /* verify if tree it is empty
       cout << isEmpty(root);
     */
 
-    /* print inoder traversal of the BST */
+    /* print inoder traversal of the BST
      inorder(root);
+    */
 
-    /* print posoderdem traversal of the BST */
-    posorder(root);
-
+    /* print posoderdem traversal of the BST
+     posorder(root);
+    */
     /* search value in tree
       cout << search(root, 8)
      */
-
-    return 0;
 }
