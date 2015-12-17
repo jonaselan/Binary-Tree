@@ -10,13 +10,11 @@ typedef struct no {
 
 //Função para criar um nó
 no * cria_no(int x){
-
     no *p;
     p=new no;
     p->info = x;
     p->esq = p->dir =NULL;
     return(p);
-
 }
 
 
